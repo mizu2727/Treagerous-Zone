@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5860368563324788672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7025336036299852264}
+  - component: {fileID: 828382826382189805}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7025336036299852264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860368563324788672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828382826382189805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860368563324788672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6076549e590ac147aa39033966d3e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clearPanel: {fileID: 2503589597622241900, guid: ea7045bb1fd08ff46ad4eaedd48af2a1, type: 3}
+  clearText: {fileID: 3592517876147945033, guid: 38b29cb579759204e8f0fc5ac9b7b6c2, type: 3}
+  clearPanelAlphaSpeed: 0.01
+  returnToStageSelectButton: {fileID: 5482294575124572328, guid: 2a0653fc4d17efb4c914215067db8df9, type: 3}
+  returnToTitleButton: {fileID: 2177462887385661250, guid: e39f00591be2f8647b7463b07134f035, type: 3}
+  pickaxe: {fileID: 5732104500328846365, guid: 28620899241ae594d8d60ebe4c967767, type: 3}
+  finder: {fileID: 245564670101165629, guid: 3e4cbbe989a021a47a2331fc09ba9daf, type: 3}
+  player: {fileID: 8111628940855658219, guid: 0cd3162994bac1241b636746a088d579, type: 3}
+  lifePanel: {fileID: 5905901374688570275, guid: 8b4fcab437d0c4b4e8dc7aaee106d985, type: 3}
+  redCoinCount: 0
+  tooBadText: {fileID: 5583067355112841866, guid: 773f6d4018b6dbb43abd30f24dae2919, type: 3}
+  toolMode: 0

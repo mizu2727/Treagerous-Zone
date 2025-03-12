@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - OutZone
+  - DamageBlock
+  - LeftCheck
+  - RightCheck
+  - RedCoin
+  - Goal
+  - Trap
+  - Floor
+  - TrapFloor
+  - SpecificPosition
+  - MoveFloor
+  - Platform
+  - MovePlatform
+  - BGM
+  - MoveTrapFloor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - PlayerDamage
+  - Trap
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BackGround01
+    uniqueID: 4227945445
+    locked: 0
+  - name: BackGround02
+    uniqueID: 3047657647
+    locked: 0
+  - name: Items
+    uniqueID: 2485562459
+    locked: 0
+  - name: SignBackGround
+    uniqueID: 3814217887
+    locked: 0
+  - name: SignText
+    uniqueID: 1374260943
+    locked: 0
+  - name: Sign
+    uniqueID: 4151876629
+    locked: 0
+  - name: other01
+    uniqueID: 499949689
+    locked: 0
+  - name: Titles
+    uniqueID: 2966391477
+    locked: 0
+  - name: other02
+    uniqueID: 990820471
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: DamageBlock
+    uniqueID: 1880034213
+    locked: 0
+  - name: UI
+    uniqueID: 427601159
+    locked: 0
