@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483c16915821197448fbb0507a561ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickButtonSE: {fileID: 8300000, guid: 24d73765699ce3e46bb23cabc3a46494, type: 3}
   signPanel: {fileID: 0}
   clickHereButton: {fileID: 0}
-  signText: {fileID: 0}
+  treagerousZoneSentence: {fileID: 11400000, guid: 20fbda85383ccf04793ff77ce341bed6, type: 2}
   signKey: 0
+  signText: {fileID: 0}
   writeSpeed: 0
-  isWrite: 0
+  clickButtonSE: {fileID: 8300000, guid: 24d73765699ce3e46bb23cabc3a46494, type: 3}
