@@ -28,3 +28,12 @@ Pro/Resources/Fonts filter=lfs diff=lfs merge=lfs -text
 Assets/TextMesh filter=lfs diff=lfs merge=lfs -text
 /Assets/TextMesh filter=lfs diff=lfs merge=lfs -text
 Assets/TextMesh[[:space:]]Pro/Resources/Fonts[[:space:]]&[[:space:]]Materials/LiberationSans[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Mega[[:space:]]Bot[[:space:]]Areas/Music/Mega[[:space:]]Bot[[:space:]]Bay[[:space:]]Music/Mega[[:space:]]Bot[[:space:]]Bay.wav filter=lfs diff=lfs merge=lfs -text
+Assets/Mega[[:space:]]Bot[[:space:]]Areas/Music/Pipes[[:space:]]Forest[[:space:]]Music/pipes-forest.wav filter=lfs diff=lfs merge=lfs -text
+Assets/Mega[[:space:]]Bot[[:space:]]Areas/Music/Pipes[[:space:]]Under[[:space:]]Music/pipes[[:space:]]under.wav filter=lfs diff=lfs merge=lfs -text
+Assets/Samples/Cinemachine/2.9.7/Cinemachine[[:space:]]Example[[:space:]]Scenes/Shared/Models/UnityCharacter/Animations/Idle.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Settings/Lit2DSceneTemplate.scenetemplate filter=lfs diff=lfs merge=lfs -text
+Assets/SunnyLand[[:space:]]Artwork/Music[[:space:]]tracks/Maniac.ogg filter=lfs diff=lfs merge=lfs -text
+Assets/TextMesh[[:space:]]Pro/Resources/Fonts[[:space:]]&[[:space:]]Materials/LiberationSans[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+Assets/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.OpenXmlFormats.dll filter=lfs diff=lfs merge=lfs -text
+Assets/unity-excel-importer-master/Assets/ExcelImporter/Editor/NPOI/Net20/NPOI.XML filter=lfs diff=lfs merge=lfs -text
