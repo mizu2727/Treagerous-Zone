@@ -9,6 +9,7 @@ public class ObjectMoveTrigger : MonoBehaviour
     [SerializeField] private Vector3[] speed;//移動速度
     [SerializeField] private int objectMode;//モードの切り替え  
     private bool isObjectMoveTrigger = false;//罠作動判定
+    private string playerTag = "Player";//タグ
     [SerializeField] private AudioClip objectMoveTriggerSE;//罠作動SE
 
     void Update()
@@ -50,7 +51,7 @@ public class ObjectMoveTrigger : MonoBehaviour
     //プレイヤーが自身に触れたらオブジェクトを移動させる罠が作動する
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player"
+        if (collision.gameObject.CompareTag(playerTag)
             && isObjectMoveTrigger == false)
         {
             isObjectMoveTrigger = true;//2回以上作動させないために必要

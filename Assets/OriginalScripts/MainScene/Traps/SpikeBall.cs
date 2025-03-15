@@ -9,6 +9,12 @@ public class SpikeBall : MonoBehaviour
     private Rigidbody2D rb2D;
     Animator animator;
 
+    //タグ系
+    private string playerTag = "Player";
+    private string trapTag = "Trap";
+    private string leftCheckTag = "LeftCheck";
+    private string rightCheckTag = "RightCheck";
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -40,16 +46,16 @@ public class SpikeBall : MonoBehaviour
     //壁に触れたら移動する向きを変える
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "LeftCheck") isMoveDirection = true;       
+        if (collider.gameObject.CompareTag(leftCheckTag)) isMoveDirection = true;       
 
-        if (collider.gameObject.tag == "RightCheck") isMoveDirection = false;       
+        if (collider.gameObject.CompareTag(rightCheckTag)) isMoveDirection = false;       
     }
 
     //プレイヤーかダメージを受ける障害物に当たったら非表示にする
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player"
-            || collision.gameObject.tag == "Trap") 
+        if (collision.gameObject.CompareTag(playerTag)
+            || collision.gameObject.CompareTag(trapTag)) 
         {
             enabled = false;
             Destroy(this.gameObject);
