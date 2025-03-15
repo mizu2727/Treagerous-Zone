@@ -704,6 +704,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6242462575305565794, guid: 52f578dd467ab9d49ab73ac37c619c63, type: 3}
+      propertyPath: Priority
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242462575305565794, guid: 52f578dd467ab9d49ab73ac37c619c63, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242462575305565794, guid: 52f578dd467ab9d49ab73ac37c619c63, type: 3}
+      propertyPath: MaxDistance
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242462575305565794, guid: 52f578dd467ab9d49ab73ac37c619c63, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 6979d52fda0579441a2122b95abaf337, type: 3}
@@ -2059,6 +2071,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1798636438}
+    - target: {fileID: 495818091245386660, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495818091245386660, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 827227130292280472, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
       propertyPath: m_Text
       value: "\u5927"
@@ -2086,6 +2106,14 @@ PrefabInstance:
     - target: {fileID: 2663280929661743617, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
       propertyPath: m_Text
       value: "BGM:\u5C0F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986676071725203214, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986676071725203214, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4339372510736467454, guid: c4fbfae507f984548b9ba5540afaefd8, type: 3}
       propertyPath: m_Text

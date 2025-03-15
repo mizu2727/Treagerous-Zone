@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,12 +35,18 @@ public class SignController : MonoBehaviour
         Clean();
     }
 
-    //テキストを書く
-    void Write(string s)
+    ////テキストを一文字ずつ表示
+    async void Write(string s)
     {
         writeSpeed = 0;
+        isWrite = true;
 
-        StartCoroutine(IEWrite(s));
+        for (int i = 0; i < s.Length; i++)
+        {
+            signText.text += s.Substring(i, 1);
+            await UniTask.Delay(TimeSpan.FromSeconds(writeSpeed));
+        }
+        isWrite = false;
     }
 
     //テキスト内容をリセット
@@ -84,19 +92,5 @@ public class SignController : MonoBehaviour
                     break;
             }
         }
-    }
-
-    //テキストを一文字ずつ表示
-    IEnumerator IEWrite(string s)
-    {
-        isWrite = true;
-
-        for (int i = 0; i < s.Length; i++)
-        {
-            signText.text += s.Substring(i, 1);
-
-            yield return new WaitForSeconds(writeSpeed);
-        }
-        isWrite = false;
     }
 }
