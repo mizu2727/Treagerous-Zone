@@ -37,6 +37,18 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float invincibleTime = 3;//無敵時間
     [SerializeField] private float flashTime = 0.5f;//点滅時間
 
+    //タグ系
+    private string outZoneTag = "OutZone";
+    private string trapTag = "Trap";
+    private string trapFloorTag = "TrapFloor";
+    private string moveTrapFloorTag = "MoveTrapFloor";
+    private string moveFloorTag = "MoveFloor";
+    private string movePlatformTag = "MovePlatform";
+    private string floorTag = "Floor";
+    private string damageBlockTag = "DamageBlock";
+    private string platformTag = "Platform";
+
+
     //SE系
     [SerializeField] private AudioClip jumpSE;//ジャンプSE
     [SerializeField] private AudioClip deadSE;//死亡時SE
@@ -234,7 +246,7 @@ public class PlayerMove : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         //奈落判定
-        if (collider.gameObject.tag == "OutZone" || hp <= 0)
+        if (collider.gameObject.CompareTag(outZoneTag) || hp <= 0)
         {
             isDead = true;
         }
@@ -243,10 +255,12 @@ public class PlayerMove : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         //ダメージ判定
-        if ((collision.gameObject.tag == "Trap" || collision.gameObject.tag == "TrapFloor"
-            || collision.gameObject.tag == "MoveTrapFloor") 
+        if ((collision.gameObject.CompareTag(trapTag) 
+            || collision.gameObject.CompareTag(trapFloorTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag)) 
             && goal.isGoal == false && isDead == false && isDamage)
         {
+
             isDamage = false;
             hp -= damage;           
 
@@ -263,8 +277,9 @@ public class PlayerMove : MonoBehaviour
 
         //ObjectMoveのコンポーネントの取得
         if (situationY == SituationY.GROUND && 
-            (collision.gameObject.tag == "MoveFloor" || collision.gameObject.tag == "MovePlatform"
-            || collision.gameObject.tag == "MoveTrapFloor")) 
+            (collision.gameObject.CompareTag(moveFloorTag)
+            || collision.gameObject.CompareTag(movePlatformTag)
+            || collision.gameObject.CompareTag(floorTag))) 
         {
            objectMove = collision.gameObject.GetComponent<ObjectMove>();
         }
@@ -274,10 +289,13 @@ public class PlayerMove : MonoBehaviour
     {
         //プレイヤーが地面に触れているかを判定する
         if (rb2d.IsTouching(ground) && situationY == SituationY.DOWN && 
-            (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "DamageBlock"
-            || collision.gameObject.tag == "TrapFloor" || collision.gameObject.tag == "MoveFloor"
-            || collision.gameObject.tag == "Platform" || collision.gameObject.tag == "MovePlatform"
-            || collision.gameObject.tag == "MoveTrapFloor"))
+            (collision.gameObject.CompareTag(floorTag) 
+            || collision.gameObject.CompareTag(damageBlockTag)
+            || collision.gameObject.CompareTag(trapFloorTag)
+            || collision.gameObject.CompareTag(moveFloorTag)
+            || collision.gameObject.CompareTag(platformTag) 
+            || collision.gameObject.CompareTag(movePlatformTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag)))
         {
             situationY = SituationY.GROUND;
             speedY = 0;
@@ -287,9 +305,11 @@ public class PlayerMove : MonoBehaviour
 
         //プレイヤーの頭が天井に触れているかを判定する
         if (rb2d.IsTouching(head) && situationY == SituationY.UP &&
-            (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "DamageBlock"
-            || collision.gameObject.tag == "TrapFloor" || collision.gameObject.tag == "MoveFloor"
-            || collision.gameObject.tag == "MoveTrapFloor"))
+            (collision.gameObject.CompareTag(floorTag) 
+            || collision.gameObject.CompareTag(damageBlockTag)
+            || collision.gameObject.CompareTag(trapFloorTag)
+            || collision.gameObject.CompareTag(moveFloorTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag)))
         {
             situationY = SituationY.DOWN;
             speedY = -jumpPower;
@@ -297,8 +317,9 @@ public class PlayerMove : MonoBehaviour
         }
 
         //ダメージ判定
-        if ((collision.gameObject.tag == "Trap" || collision.gameObject.tag == "TrapFloor"
-            || collision.gameObject.tag == "MoveTrapFloor")
+        if ((collision.gameObject.CompareTag(trapTag)
+            || collision.gameObject.CompareTag(trapFloorTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag))
             && goal.isGoal == false && isDead == false && isDamage)
         {
           isDamage = false;
@@ -316,8 +337,9 @@ public class PlayerMove : MonoBehaviour
 
         //ObjectMoveのコンポーネントの取得
         if (situationY == SituationY.GROUND &&
-            (collision.gameObject.tag == "MoveFloor" || collision.gameObject.tag == "MovePlatform"
-            || collision.gameObject.tag == "MoveTrapFloor"))
+            (collision.gameObject.CompareTag(moveFloorTag)
+            || collision.gameObject.CompareTag(movePlatformTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag)))
         {
             objectMove = collision.gameObject.GetComponent<ObjectMove>();
         }
@@ -326,8 +348,9 @@ public class PlayerMove : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         //移動するオブジェクトの移動速度に影響されない
-        if (collision.gameObject.tag == "MoveFloor" || collision.gameObject.tag == "MovePlatform"
-            || collision.gameObject.tag == "MoveTrapFloor")
+        if (collision.gameObject.CompareTag(moveFloorTag) 
+            || collision.gameObject.CompareTag(movePlatformTag)
+            || collision.gameObject.CompareTag(moveTrapFloorTag))
         {
             objectMove = null;
         }

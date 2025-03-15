@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
+    private string playerTag = "Player";//タグ
     [SerializeField] private GameObject signPanel;//サインパネル
     [SerializeField] private GameObject clickHereButton;//クリックボタン
     private float clickButtonPositionY = 2;//クリックボタンのY座標
@@ -12,7 +13,7 @@ public class Sign : MonoBehaviour
     //プレイヤーが看板に近づいた際にクリックボタンとパネルを表示し、文章番号を指定の数字にする
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag(playerTag))
         {
             clickHereButton.transform.position 
                 = new Vector2(this.transform.position.x,this.transform.position.y + clickButtonPositionY);
@@ -24,7 +25,7 @@ public class Sign : MonoBehaviour
     //クリックボタンを常に看板の近くに表示する
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag(playerTag))
         {
             clickHereButton.transform.position
                 = new Vector2(this.transform.position.x, this.transform.position.y + clickButtonPositionY);

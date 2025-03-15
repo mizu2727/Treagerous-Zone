@@ -678,6 +678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 3455077937322353740, guid: 25c2f677d8a8bba45a6c1b5b33c8075e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8111628940855658215, guid: 0cd3162994bac1241b636746a088d579, type: 3}
     - target: {fileID: 3455077937322353741, guid: 25c2f677d8a8bba45a6c1b5b33c8075e, type: 3}
       propertyPath: m_RootOrder
       value: 0

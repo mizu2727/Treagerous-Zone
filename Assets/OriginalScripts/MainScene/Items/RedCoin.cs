@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class RedCoin : MonoBehaviour
 {
+    private string playerTag = "Player";//タグ
     [SerializeField] private AudioClip redCoinSE;//赤コイン取得SE
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         //プレイヤーが自身に触れたら赤コインを取得
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.CompareTag(playerTag))
         {   
             if (UIController.instance != null)
             {
