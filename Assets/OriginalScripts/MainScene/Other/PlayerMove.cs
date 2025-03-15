@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,8 +89,7 @@ public class PlayerMove : MonoBehaviour
     {
         //死亡時、ステージクリア時にプレイヤーの操作が出来ないようにする
         if (isDead)
-        {
-            StartCoroutine(Dead());          
+        {         
             return;
         }
         else if (goal.isGoal)
@@ -249,10 +250,11 @@ public class PlayerMove : MonoBehaviour
         if (collider.gameObject.CompareTag(outZoneTag) || hp <= 0)
         {
             isDead = true;
+            GameController.instance.PlayAudioSE(deadSE);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    async void OnCollisionEnter2D(Collision2D collision)
     {
         //ダメージ判定
         if ((collision.gameObject.CompareTag(trapTag) 
@@ -267,12 +269,13 @@ public class PlayerMove : MonoBehaviour
             if (hp <= 0) 
             {
                 isDead = true;
+                await Dead();
                 return;
             }
 
             GameController.instance.PlayAudioSE(playerDamageSE);
             gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
-            StartCoroutine(PlayerDamage());
+            await PlayerDamage(); 
         }
 
         //ObjectMoveのコンポーネントの取得
@@ -285,7 +288,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private async void OnCollisionStay2D(Collision2D collision)
     {
         //プレイヤーが地面に触れているかを判定する
         if (rb2d.IsTouching(ground) && situationY == SituationY.DOWN && 
@@ -328,11 +331,13 @@ public class PlayerMove : MonoBehaviour
           if (hp <= 0)
           {
               isDead = true;
+              await Dead();
               return;
           }
-
-          GameController.instance.PlayAudioSE(playerDamageSE);
-          StartCoroutine(PlayerDamage());
+            GameController.instance.PlayAudioSE(playerDamageSE);
+            gameObject.layer = LayerMask.NameToLayer("PlayerDamage");
+            await PlayerDamage();
+            
         }
 
         //ObjectMoveのコンポーネントの取得
@@ -357,17 +362,17 @@ public class PlayerMove : MonoBehaviour
     }
 
     //ダメージを受けたら一定時間ダメージ判定をオフにする
-    IEnumerator PlayerDamage()
+    async UniTask PlayerDamage()
     {
         Color color = spriteRenderer.color;
 
         //プレイヤーが一定時間点滅する
         for (int i = 0; i < invincibleTime; i++)
         {
-            yield return new WaitForSeconds(flashTime);
+            await UniTask.Delay(TimeSpan.FromSeconds(flashTime));
             spriteRenderer.color = new Color(color.r,color.g,color.b,0);
 
-            yield return new WaitForSeconds(flashTime);
+            await UniTask.Delay(TimeSpan.FromSeconds(flashTime));
             spriteRenderer.color = new Color(color.r,color.g,color.b,1);
         }
         spriteRenderer.color = color;
@@ -375,13 +380,13 @@ public class PlayerMove : MonoBehaviour
     }
 
     //死亡後、プレイヤーを非表示にする
-    IEnumerator Dead() 
+    async UniTask Dead() 
     {
         rb2d.velocity = new Vector2(0, 0);
-        GameController.instance.PlayAudioSE(deadSE);
         animator.Play("Player-Death");
+        GameController.instance.PlayAudioSE(deadSE);
 
-        yield return new WaitForSeconds(0.5f);
-        if (gameObject.activeSelf) Destroy(gameObject);
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        Destroy(gameObject);
     }
 }
