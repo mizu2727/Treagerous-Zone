@@ -35,24 +35,35 @@ public class GameController : MonoBehaviour
     void Update()
     {
         //ステージクリア時
-        if (goal.isGoal) 
+        if (goal.isGoal)
         {
-            BGMScript.StopBGM();
-
-            StartCoroutine(UIController.instance.Result());
+            UIController.instance.ResultScreen();
         }
 
         //プレイヤーのライフの情報
         //ポーズからタイトルへ戻る際に発生するエラーを防ぐために下記のif文が必要
         if (Time.timeScale == 1) UIController.instance.PlayerLife();
-        
-        //プレイヤー死亡時
-        if (player.isDead) 
+    }
+
+    //ゲームクリア時
+    public async void GameClear() 
+    {
+        if (goal.isGoal)
+        {
+            BGMScript.StopBGM();
+
+            await UIController.instance.Result();
+        }
+    }
+
+    //ゲームオーバー時
+    public async void GameOver()
+    {
+        if (player.isDead)
         {
             BGMScript.StopBGM();
             enabled = false;
-
-            StartCoroutine(UIController.instance.Retry());
+            await UIController.instance.Retry();
         }
     }
 
