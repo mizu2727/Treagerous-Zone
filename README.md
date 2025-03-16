@@ -1,10 +1,7 @@
-# Treagerous-Zone
-
-2025/3/12に作成。
+# Treagerous Zone_Ver1.0.1
 
 ★主な作業内容
-下記である。
-
+・新規実装
 ・リファクタリング
 
 

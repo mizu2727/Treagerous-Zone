@@ -385,6 +385,8 @@ public class PlayerMove : MonoBehaviour
         rb2d.velocity = new Vector2(0, 0);
         animator.Play("Player-Death");
         GameController.instance.PlayAudioSE(deadSE);
+        Debug.Log("Dead");
+        GameController.instance.GameOver();
 
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         Destroy(gameObject);

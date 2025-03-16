@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class UIController : MonoBehaviour
 {
@@ -78,33 +80,37 @@ public class UIController : MonoBehaviour
         }
     }
 
+    //クリア画面の背景
+    public void ResultScreen() 
+    {
+        //クリアパネルの背景を徐々に暗くする
+        clearPanel.GetComponent<Image>().color = new Color(0, 0, 0, clearPanelAlpha);
+        clearPanelAlpha += clearPanelAlphaSpeed;
+    }
+
     //クリアテキスト→ステージ選択へ戻るボタン、タイトルへ戻るボタンの順に表示する
-    public IEnumerator Result()
+    public async UniTask Result()
     {
         //cearPanelの描画順番を一番手前にして、他のUIをクリアパネルで隠すために必要
         clearPanel.transform.SetAsLastSibling();
         clearPanel.SetActive(true);
 
-
-        //クリアパネルの背景を徐々に暗くする
-        clearPanel.GetComponent<Image>().color = new Color(0, 0, 0, clearPanelAlpha);
-        clearPanelAlpha += clearPanelAlphaSpeed;
-
-        yield return new WaitForSeconds(3);
+        await UniTask.Delay(TimeSpan.FromSeconds(3f));
         clearText.SetActive(true);
 
-        yield return new WaitForSeconds(2);
+        await UniTask.Delay(TimeSpan.FromSeconds(2f));
         returnToStageSelectButton.SetActive(true);
         returnToTitleButton.SetActive(true);
     }
 
+
     //プレイヤー死亡時のテキストを表示→シーンをロードしてリスタートの順で処理する
-    public IEnumerator Retry()
+    public async UniTask Retry()
     {
-        yield return new WaitForSeconds(0.5f);
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         tooBadText.SetActive(true);
 
-        yield return new WaitForSeconds(2.5f);
+        await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
         Scene thisScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(thisScene.name);
     }
